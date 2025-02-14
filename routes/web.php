@@ -1,11 +1,12 @@
 <?php
+
 use App\Models\Student;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Authorization;
 use App\Http\Controllers\Siswa;
 use App\Http\Controllers\Admin;
 use App\Http\Controllers\Printer;
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\KelasController;
 use App\Http\Controllers\TahunController;
 
@@ -41,7 +42,7 @@ Route::put('/password/{user}', [Siswa::class, 'change_password'])->middleware('a
 // Admin Exclusive Routes
 Route::get('/dashboard', [Admin::class, 'index'])->middleware('admin');
 Route::post('/pindah', [Admin::class, 'move_students'])->middleware('admin');
-Route::resource('/admin/siswa', UserController::class)->middleware('admin');
+Route::resource('/admin/siswa', SiswaController::class)->middleware('admin');
 Route::resource('/admin/grup', KelasController::class)->middleware('admin');
 Route::resource('/admin/tahun', TahunController::class)->middleware('admin');
 Route::get('admin/ayah/{dad}', [Admin::class, 'dad_form'])->middleware('admin');
@@ -57,4 +58,3 @@ Route::get('admin/mutasi/{siswa}', [Admin::class, 'mutasi_form'])->middleware('a
 Route::post('admin/mutasi/{siswa}', [Admin::class, 'edit_mutasi'])->middleware('admin');
 Route::get('admin/print', [Printer::class, 'daftar_siswa'])->middleware('admin');
 Route::get('admin/print/{siswa}', [Printer::class, 'data_siswa'])->middleware('auth');
-

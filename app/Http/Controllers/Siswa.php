@@ -31,25 +31,20 @@ class Siswa extends Controller
     {
         $validated = $request->validate([
             'alamat' => 'required|string',
+            'desa' => 'required|string',
             'kota' => 'required|string',
             'kecamatan' => 'required|string',
+            'propinsi' => 'required|string',
             'tempat_lahir' => 'required|string',
             'tanggal_lahir' => 'required',
             'anak_ke' => 'required|gt:0',
-            'jlh_saudara' => 'nullable|gt:0',
+            'jmlh_saudara' => 'nullable|gt:0',
             'saudara_tiri' => 'nullable|gt:0',
             'saudara_angkat' => 'nullable|gt:0',
             'bahasa' => 'required',
             'agama' => 'required',
-            'jarak' => 'required|gt:0',
-            'nomor_hp' => 'nullable|string|max:13|regex:/[0-9]/',
-            'goldar' => 'required',
-            'tinggi' => 'required|gt:50',
-            'berat' => 'required|gt:20',
-            'penyakit' => 'nullable|string',
-            'hobi' => 'nullable|string',
             'kewarganegaraan' => 'required|string',
-            'sekolah_asal' => 'required',
+            'ciri' => 'nullable|string',
         ]);
 
         Biodata::where('uri', $biodata->uri)->update($validated);
@@ -74,7 +69,6 @@ class Siswa extends Controller
             'kewarganegaraan' => 'required|string',
             'pekerjaan' => 'required|string',
             'pendidikan' => 'required',
-            'penghasilan' => 'required|numeric',
             'alamat' => 'required|string|max:200',
             'nomor_hp' => 'required|string|max:13|regex:/[0-9]/',
             'status' => 'required',
@@ -101,7 +95,6 @@ class Siswa extends Controller
             'kewarganegaraan' => 'required|string',
             'pekerjaan' => 'required|string',
             'pendidikan' => 'required',
-            'penghasilan' => 'nullable|numeric',
             'alamat' => 'required|string|max:200',
             'nomor_hp' => 'required|string|max:13|regex:/[0-9]/',
             'status' => 'required',
@@ -128,7 +121,6 @@ class Siswa extends Controller
             'kewarganegaraan' => 'required|string',
             'pekerjaan' => 'required|string',
             'pendidikan' => 'required',
-            'penghasilan' => 'required|numeric',
             'alamat' => 'required|string|max:200',
             'nomor_hp' => 'required|string|max:13|regex:/[0-9]/',
         ]);
